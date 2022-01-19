@@ -1,4 +1,4 @@
-var Dish = require('./models/dish');
+var Dish = require('../models/dish');
 
 exports.dish_list = function (req, res, next) {
     Dish.find({}, 'name price')
