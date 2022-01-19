@@ -1,5 +1,5 @@
-var TableReservation = require('../models/tableReservation');
-var Table = require('../models/table');
+var TableReservation = require('./models/tableReservation');
+var Table = require('./models/table');
 const { body, validationResult } = require('express-validator');
 
 function getAsDate(day, time, h=0) {

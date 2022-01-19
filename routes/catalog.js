@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var table_controller = require('./controllers/tableController');
-var dish_controller = require('./controllers/dishController');
-var tableReservation_controller = require('./controllers/tableReservationController');
+var table_controller = require('../controllers/tableController');
+var dish_controller = require('../controllers/dishController');
+var tableReservation_controller = require('../controllers/tableReservationController');
 
 router.get('/', table_controller.index);
 
