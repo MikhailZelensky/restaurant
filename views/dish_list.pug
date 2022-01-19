@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+  each dish in dish_list
+    li #{dish.name}, #{dish.price}
+  else
+    li Нет блюд.

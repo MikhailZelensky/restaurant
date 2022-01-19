@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1= title
+  form(method='POST' action='')
+    div.form-group
+      label(for='date') Дата:
+      input(type='date' name='date' required='true' value=(undefined===date ? '' : date.date) )
+      label(for='time') Время:
+      input(type='time' name='time' min='10:00' max='22:00' required='true' value=(undefined===date ? '' : date.time) )
+      label(for='booking_time') Количество часов:
+      input(type='Number' placeholder='Количество часов' name='booking_time' min='1' max='13' required='true' value=(undefined===date ? '' : date.booking_time) )
+    button.btn.btn-primary(type='submit') Выбрать
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
+    ul
+
+  if reservations!==undefined
+    each reservation in reservations
+      if !(reservation.date_of_end <= d_begin || d_end <= reservation.date_of_begin)
+        ul
+        each table in tables
+          if table && table.name == reservation.table.name
+              -tables.splice(tables.indexOf(table), 1)
+
+  if reservations!==undefined
+    ul
+    each table in tables
+      li #{table.name}
+      form(method='POST' action='/catalog/date/reservation')
+        div.form-group
+          input(type='hidden' name='date_b' required='true' value=d_begin )
+          input(type='hidden' name='date_e' required='true' value=d_end )
+          input(type='hidden' name='name' required='true' value=table.name )
+        button(type='submit') Забронировать
+    else
+      li Нет свободных столиков.
