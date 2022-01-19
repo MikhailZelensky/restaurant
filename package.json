@@ -6,8 +6,8 @@
   },
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www"
+    "prestart": "next build",
+    "start": "next start -p ${PORT}"
   },
   "dependencies": {
     "async": "^3.2.3",
